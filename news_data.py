@@ -26,7 +26,7 @@ class aylien_news:
         #company_shorter_name = company_gfcid_name.replace(' Pte Ltd','').replace(' Ltd','').replace(' Limited','').replace(' Holdings','')
         opts = {
         'type': 'dbpedia_resources',
-        'term': company_name, #'Sheng Siong',
+        'term': company_name, 
         'language': 'en',
         'per_page': 3
         }
@@ -113,9 +113,13 @@ class aylien_news:
 
     def summary_para (self,summary_ls):
         #transform list of sentences in summary to a string
-        summary = ''
-        for sentence in summary_ls:
-            summary+=sentence
+#         print(summary_ls)
+        try:
+            summary = ''
+            for sentence in summary_ls:
+                summary+=sentence
+        except TypeError:
+            summary=''
         return summary
 
     def create_news_dict(self,story,gfcid,company_GFCID_name):
